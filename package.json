@@ -45,6 +45,8 @@
     "webpack-stream": "^3.2.0"
   },
   "dependencies": {
+    "helmet": "^3.9.0",
+    "helmet-csp": "^2.6.0",
     "jsrsasign": "^5.0.7"
   },
   "peerDependencies": {

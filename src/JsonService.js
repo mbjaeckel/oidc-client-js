@@ -20,6 +20,8 @@ export default class JsonService {
         return new Promise((resolve, reject) => {
             
             var req = new this._XMLHttpRequest();
+
+
             req.open('GET', url);
 
             req.onload = function() {

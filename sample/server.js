@@ -9,10 +9,21 @@ var url = "http://localhost:" + port;
 
 var express = require('express');
 var app = express();
+var csp = require('helmet-csp')
+
 
 var static = express.static(path.join(__dirname, 'public'));
 app.use(function (req, res, next) {
-    res.set('Content-Security-Policy', "default-src 'self'");
+    //res.set('Content-Security-Policy', "default-src 'self' 'pingfed.eagleinvsys.com' ");
+    app.use(csp({
+        directives: {
+            defaultSrc: ["'self'", 'pingfed.eagleinvsys.com'],
+            styleSrc: ["'self'", 'pingfed.eagleinvsys..com'],
+            imgSrc: ['img.com', 'data:'],
+            sandbox: ['allow-forms', 'allow-scripts'],
+            reportUri: '/report-violation'
+        }
+    }));
     next();
   });
 app.use(static);
